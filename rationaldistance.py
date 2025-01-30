@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+#keep in mind, only accurate up to 15 digits
 import math, random
 def rational_dist():
 	a=(200,200)
