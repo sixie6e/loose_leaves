@@ -1,0 +1,19 @@
+Using HTML injection I was able to bypass the Firefox restrictions and access the desktop and the root folder.
+
+1. After logging in as yourself[inmate] click on Law Library.
+
+2. In the Fast Case search box turn the query to a link that refers to the SSL enabled site(the domain suggests local *.sjm(smartjailmail)) like so:
+
+<a href="https://www.inmate-interface.sjm">random_text</a>
+
+3. Click the link that shows up in the results.
+
+4. A button that says “Get me out of here” appears. Click it.
+
+5. A fresh Firefox page loads. At the bottom, click Extensions.
+
+6. Disable the add-on that limits the menu/tool bars.
+
+7. Click Restart Firefox.
+
+8. Under customize, there is an ‘Open file…’ button. This accessed the root folder and opened any filetype supported by Firefox.
