@@ -53,7 +53,4 @@ distance_matrix = great_circle_distance_matrix(sources)
 permutation, distance = solve_tsp_dynamic_programming(distance_matrix)
 print(distance, permutation)
 print(distance_matrix)
-
-#solutions for personal vehicles:
-the_only_solution = 'Stop driving so much. One or two trips into society per month is all you need.'
 	
