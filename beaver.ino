@@ -1,26 +1,36 @@
-const int led = 6
-const int pir = 7
-const int spk = 8
+const int pir = 7;
+//const int led = 6; 
+const int spk = 8; 
+
+unsigned long lastMotionTime = 0;
+const unsigned long TIMEOUT_DURATION = 8000;
+bool motionActive = false;
+
 void setup() {
+  Serial.begin(9600);
   pinMode(pir, INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(spk, OUTPUT);
-  Serial.begin(9600);
-  sensors.begin();
+  pinMode(spk, OUTPUT);  
+  Serial.println("System state: IDLE.");
 }
+
 void loop() {
-  if (digitalRead(pir)) {
-	  int totalseconds = millis() / 1000;
-	  int seconds = totalseconds % 60;
-	  int mins = totalseconds / 60;
-	  Serial.print(mins);
-	  Serial.print(":");
-	  if (seconds < 10) Serial.print("0");
-	  Serial.print(seconds);
-	  Serial.print("\tANIMAL DETECTED");
-	  digitalWrite(led, HIGH);
-	  digitalWrite(spk, HIGH);
-	  delay(10000);}
+  int motionState = digitalRead(pir);
+  if (motionState == HIGH) {
+    if (!motionActive) {
+      Serial.println("BEING DETECTED!");
+      digitalWrite(led, HIGH);
+      digitalWrite(spk, HIGH);
+      motionActive = true;
+    }
+    lastMotionTime = millis();
+  } 
   else {
-	  continue;}
+    if (motionActive && (millis() - lastMotionTime >= TIMEOUT_DURATION)) {
+      Serial.println("NO BEINGS DETECTED.");
+      digitalWrite(led, LOW);
+      digitalWrite(spk, LOW);
+      motionActive = false;
+    }
+  }
 }
