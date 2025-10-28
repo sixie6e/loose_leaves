@@ -1,9 +1,9 @@
-const int pir = 7;
-//const int led = 6; 
+const int pir = 2;
+// const int led = 6; 
 const int spk = 8; 
 
 unsigned long lastMotionTime = 0;
-const unsigned long TIMEOUT_DURATION = 8000;
+const unsigned long timeoutDuration = 8000;
 bool motionActive = false;
 
 void setup() {
@@ -13,24 +13,24 @@ void setup() {
   pinMode(spk, OUTPUT);  
   Serial.println("System state: IDLE.");
 }
+ digitalWrite(spk, LOW);
+  digitalWrite(BUILTIN_LED, LOW);
+
 
 void loop() {
   int motionState = digitalRead(pir);
   if (motionState == HIGH) {
-    if (!motionActive) {
-      Serial.println("BEING DETECTED!");
-      digitalWrite(led, HIGH);
-      digitalWrite(spk, HIGH);
-      motionActive = true;
-    }
+    Serial.println("BEING DETECTED!");
+    digitalWrite(BUILTIN_LED, HIGH);
+    digitalWrite(spk, HIGH);
     lastMotionTime = millis();
-  } 
-  else {
-    if (motionActive && (millis() - lastMotionTime >= TIMEOUT_DURATION)) {
-      Serial.println("NO BEINGS DETECTED.");
-      digitalWrite(led, LOW);
-      digitalWrite(spk, LOW);
-      motionActive = false;
-    }
+    motionDetected = true;
+  }
+  if (motionDetected && (millis() - lastMotionTime >= timeoutDuration)) {
+    Serial.println("NO BEINGS DETECTED.");
+    digitalWrite(BUILTIN_LED, LOW);
+    // digitalWrite(led, LOW);
+    digitalWrite(spk, LOW);
+    motionDetected = false;
   }
 }
