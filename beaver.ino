@@ -12,10 +12,9 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(spk, OUTPUT);  
   Serial.println("System state: IDLE.");
-}
- digitalWrite(spk, LOW);
+  digitalWrite(spk, LOW);
   digitalWrite(BUILTIN_LED, LOW);
-
+}
 
 void loop() {
   int motionState = digitalRead(pir);
