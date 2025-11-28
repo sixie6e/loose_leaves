@@ -1,3 +1,8 @@
+# The Law of Unintended Consequences states that interventions in complex systems
+# such as ecosystems, will inevitably produce results that were not foreseen or
+# intended. When humans attempt to mitigate introduced, invasive # species, this
+# law frequently manifests in ways that create new ecological problems.
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
