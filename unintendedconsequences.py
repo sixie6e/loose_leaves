@@ -19,7 +19,7 @@ fig, ax = plt.subplots(figsize=(10, 6))
 species = df['Species'].unique()
 time_periods = df['Time_Period'].unique()
 x = np.arange(len(species)) 
-width = 0.35 
+width = 0.45 
 rects1 = ax.bar(x - width/2, df[df['Time_Period'] == time_periods[0]]['Percent_High_Level_Positive'], width, label=time_periods[0], color='#4C72B0')
 rects2 = ax.bar(x + width/2, df[df['Time_Period'] == time_periods[1]]['Percent_High_Level_Positive'], width, label=time_periods[1], color='#DD8452')
 
@@ -28,7 +28,7 @@ ax.set_title('Increase in Severe Secondary Poisoning of UK Raptors (2005-2022)',
 ax.set_xticks(x)
 ax.set_xticklabels(species, rotation=0, fontsize=12)
 ax.legend(title='Time Period', fontsize=10)
-ax.set_ylim(0, 100) # percentgae max
+ax.set_ylim(0, 100) # percentage max
 
 def autolabel(rects):
     for rect in rects:
