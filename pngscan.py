@@ -4,7 +4,7 @@ import os
 import re
 
 search_string = input("Text: ")
-screenshots_folder = r"/path/to/folder"
+screenshots_folder = r"/home/sixie6e/Pictures/sc"
 
 def pngscan(folder_path, search_query):	
     ext = ('.png')
@@ -21,12 +21,5 @@ def pngscan(folder_path, search_query):
                     print(f"[+] Found: {filename}")                    
             except Exception as e:
                 print(f"[-]{filename}: {e}")
-                
-    if results:
-        print(f"'{search_query}' found in:")
-        for res in results:
-            print(f"- {res}")
-    else:
-        print("Not found.")
 
 pngscan(screenshots_folder, search_string)
